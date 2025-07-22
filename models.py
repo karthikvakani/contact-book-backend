@@ -13,3 +13,17 @@ class Users(base):
     profile_image=Column(String)
     is_active=Column(Boolean)
 
+class Contacts(base):
+    __tablename__='contacts'
+
+    id=Column(Integer, primary_key=True, index=True)
+    first_name: str=Column(String)
+    last_name: str=Column(String)
+    email: str=Column(String)
+    mobile_number: int=Column(Integer)
+    profile_image: int=Column(Integer)
+    group: str=Column(String)
+    is_favourite:bool=Column(Boolean)
+    is_active:bool=Column(Boolean)
+    user_id: int=Column(Integer, ForeignKey("users.id"))
+
