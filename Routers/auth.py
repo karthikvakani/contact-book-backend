@@ -51,7 +51,6 @@ def authenticate_user(email: str, password: str, db: db_dependency):
 
     if user is None:
         return False
-    
     if not bcrypt_context.verify(password, user.hashed_password):
         return False
     return user
