@@ -1,5 +1,7 @@
 from database import base
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Date
+from datetime import date
+
 
 class Users(base):
     __tablename__='users'
@@ -9,7 +11,6 @@ class Users(base):
     last_name: str=Column(String)
     email: str=Column(String)
     hashed_password=Column(String)
-    mobile_number: int=Column(Integer, unique=True)
     profile_image=Column(String)
     is_active=Column(Boolean)
 
@@ -22,8 +23,10 @@ class Contacts(base):
     email: str=Column(String)
     mobile_number: int=Column(Integer)
     profile_image: int=Column(Integer)
-    group: str=Column(String)
+    group: str=Column(String, nullable=True)
     is_favourite:bool=Column(Boolean)
     is_active:bool=Column(Boolean)
     user_id: int=Column(Integer, ForeignKey("users.id"))
+    birthday: date=Column(Date, nullable=True)
+    address: str=Column(String)
 
